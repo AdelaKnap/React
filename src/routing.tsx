@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
 import Layout from "./components/Layout";
+import LoginPage from "./pages/LoginPage";
+import ProfilePage from "./pages/ProfilePage";
+
 
 // Routing med layout fil som huvudfil
 const router = createBrowserRouter([
@@ -14,8 +16,12 @@ const router = createBrowserRouter([
                 element: <HomePage />
             },
             {
-                path: "/about",
-                element: <AboutPage />
+                path: "/login",
+                element: <LoginPage />
+            },
+            {
+                path: "/profile",
+                element: <ProfilePage />
             }
         ]
     }

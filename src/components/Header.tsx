@@ -12,8 +12,13 @@ const Header = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/about" className={({ isActive }) => (isActive ? "active" : "")}>
-                            Om sidan
+                        <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "")}>
+                            Logga in
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to="/profile" className={({ isActive }) => (isActive ? "active" : "")}>
+                            Mina sidor
                         </NavLink>
                     </li>
                 </ul>

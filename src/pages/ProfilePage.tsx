@@ -2,7 +2,7 @@
 const AboutPage = () => {
     return (
         <div>
-            <h1>Om sidan</h1>
+            <h1>Mina sidor</h1>
         </div>
     )
 }
