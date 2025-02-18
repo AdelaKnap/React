@@ -3,7 +3,7 @@ import HomePage from "./pages/HomePage";
 import Layout from "./components/Layout";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
-
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // Routing med layout fil som huvudfil
 const router = createBrowserRouter([
@@ -21,7 +21,11 @@ const router = createBrowserRouter([
             },
             {
                 path: "/profile",
-                element: <ProfilePage />
+                element: (
+                    <ProtectedRoute>
+                        <ProfilePage />
+                    </ProtectedRoute>
+                )
             }
         ]
     }
