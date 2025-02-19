@@ -1,4 +1,4 @@
-import { createContext, useState, useContext, ReactNode } from "react";
+import { createContext, useState, useContext, ReactNode, useEffect } from "react";
 import { User, LoginCredentials, AuthResponse, AuthContextType } from "../types/auth.types";
 
 // Skapa Context för autentisering
@@ -45,10 +45,52 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
         }
     };
 
-    // Funktion för att logga ut
-    const logout = () => {
-        setUser(null);
+    // Funktion för att hämta inloggad användare för att inte behöva logga in på nytt vid sidomladdning
+    const checkUser = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/users/checkSession", {
+                method: "GET",
+                credentials: "include",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                }
+            });
+
+            if (!response.ok) throw new Error("Ingen session hittades");
+
+            const data = await response.json();
+            setUser(data.user);
+
+        } catch (error) {
+            console.error("Fel vid kontroll av cookie/session:", error);
+            setUser(null);
+        }
     };
+
+    // Kör chechUser av session vid laddning
+    useEffect(() => {
+        checkUser();
+    }, []);
+
+    // Funktion för att logga ut
+    const logout = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/users/logout", {
+                method: "GET",
+                credentials: "include",
+                headers: { "Content-Type": "application/json" },
+            });
+
+            if (!response.ok) throw new Error("Misslyckades att logga ut");
+
+            setUser(null);
+
+        } catch (error) {
+            console.error("Fel vid utloggning:", error);
+        }
+    };
+
 
     return (
         // Providern sätter värdena till child-komponenterna
@@ -66,5 +108,5 @@ export const useAuth = (): AuthContextType => {
         throw new Error("useAuth måste användas inom en provider");
     }
 
-    return context; 
+    return context;
 };

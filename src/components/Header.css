@@ -26,3 +26,18 @@ nav ul li a:hover,
 nav ul li .active {
     color: yellow;
 }
+
+button {
+    background-color: yellow;
+    color: black;
+    border: none;
+    padding: 4px 8px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: black;
+    color: yellow;
+}

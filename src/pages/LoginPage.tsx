@@ -1,24 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./css/Login.css";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+
+    // States
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    const { login } = useAuth();
+    // login-funktionen och användaren från AuthContext
+    const { login, user } = useAuth();
     const navigate = useNavigate();
 
+    // Om användaren redan är inloggad, skicka till profilsidan
+    useEffect(() => {
+        if (user) {
+            navigate("/profile");
+        }
+    }, [user, navigate]);
+
+    // Submit för fomuläret
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setError("");
-        console.log("Inloggning:", { username, password });
 
         try {
-            await login({ username, password });
-            navigate("/profile");
+            await login({ username, password });   // login-funktionen från AuthContext
+            navigate("/profile");                  // Till Mina sidor vid lyckad inloggning
 
         } catch (error) {
             console.error("Inloggning misslyckades...:", error);
