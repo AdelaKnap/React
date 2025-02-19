@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import Layout from "./components/Layout";
 import LoginPage from "./pages/LoginPage";
-import ProfilePage from "./pages/ProfilePage";
+import ProductsPage from "./pages/ProductsPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 // Routing med layout fil som huvudfil
@@ -20,10 +20,10 @@ const router = createBrowserRouter([
                 element: <LoginPage />
             },
             {
-                path: "/profile",
+                path: "/products",
                 element: (
                     <ProtectedRoute>
-                        <ProfilePage />
+                        <ProductsPage />
                     </ProtectedRoute>
                 )
             }

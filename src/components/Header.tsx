@@ -16,12 +16,14 @@ const Header = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to="/profile" className={({ isActive }) => (isActive ? "active" : "")}>
-                            Mina sidor
+                        <NavLink to="/products" className={({ isActive }) => (isActive ? "active" : "")}>
+                            Produkthantering
                         </NavLink>
                     </li>
                     <li>
+
                         {
+                            // Om användaren inte är inloggad visas Logga in och annars Logga ut-knapp
                             !user ? <NavLink to="/login" className={({ isActive }) => (isActive ? "active" : "")}>Logga in</NavLink> : <button onClick={logout}>Logga ut</button>
                         }
                     </li>
