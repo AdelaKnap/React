@@ -54,10 +54,20 @@
 }
 
 .search-form {
-    margin: 0 auto;
-    width: 100%;
-    max-width: 400px;
+    margin: 2% auto;
+    border: 2px solid black;
+    max-width: 450px;
+    box-sizing: border-box;
 }
+
+.search-form input {
+    padding: 8px;
+    font-size: 1em;
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+}
+
 
 .fetchInfo {
     text-align: center;

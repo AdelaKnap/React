@@ -14,7 +14,7 @@ const LoginPage = () => {
     const { login, user } = useAuth();
     const navigate = useNavigate();
 
-    // Om användaren redan är inloggad, skicka till profilsidan
+    // Om användaren redan är inloggad, skicka till produktsidan
     useEffect(() => {
         if (user) {
             navigate("/products");

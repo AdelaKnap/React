@@ -8,6 +8,8 @@ const HomePage = () => {
     const [products, setProducts] = useState<ProductInterface[] | []>([]);
     const [error, setError] = useState<string | null>(null);
     const [loading, setloading] = useState(false);
+    const [search, setSearch] = useState("");
+    const [filteredProducts, setFilteredProducts] = useState<ProductInterface[]>([]);
 
     //useEffect för att hämta produkterna
     useEffect(() => {
@@ -22,11 +24,12 @@ const HomePage = () => {
             const response = await fetch("http://localhost:5000/products");
 
             if (!response.ok) {
-                throw new Error("Något gick fel vid hämtning av produkterna");
+                throw new Error("Något gick fel vid hämtning av produkterna.");
             } else {
                 const data = await response.json();
 
                 setProducts(data);
+                setFilteredProducts(data);
                 setError(null);
 
             }
@@ -36,8 +39,17 @@ const HomePage = () => {
         } finally {
             setloading(false);
         }
-    }
+    };
 
+    // Filtrera todos med useEffect
+    useEffect(() => {
+        const filtered = products.filter(product =>
+            product.name.toLowerCase().includes(search.toLowerCase()) // Filtrera utifårn namnet
+        );
+        setFilteredProducts(filtered);
+    }, [search, products]);
+
+    // Sidinnehållet
     return (
         <div>
             <h1>Välkommen till Kök&Fika!</h1>
@@ -46,15 +58,22 @@ const HomePage = () => {
             {loading && (
                 <div className="fetchInfo">
                     <span className="loading-spinner"></span>
-                    <p>Hämtar produkter...</p>
+                    <p><em>Hämtar produkter...</em></p>
                 </div>
             )}
 
+            {/* Sökformulär */}
+            <form className="search-form">
+                <label htmlFor="search"></label>
+                <input type="text" placeholder="Sök efter produkt" value={search} onChange={(event) => setSearch(event.target.value)} />
+            </form>
+
+            {/* Felmeddelande */}
             {error && <p className="errorMess">{error}</p>}
 
             <div className="products-container">
                 {
-                    products.map((product) => (
+                    filteredProducts.map((product) => (
                         <section className="product" key={product._id}>
                             <h3>{product.name}</h3>
                             <p>{product.description}</p>
