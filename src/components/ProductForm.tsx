@@ -50,16 +50,14 @@ const ProductForm = ({ selectedProduct, refreshProducts, clearSelectedProduct }:
             await validationSchema.validate(product, { abortEarly: false });
             setErrors({});
 
-            // Url sätts beroende på om det är en ny produkt eller en uppdatering (om selectedProduct finns är det uppdatering)
+            // Url och metod sätts beroende på om det är en ny produkt eller en uppdatering (om selectedProduct finns är det uppdatering)
             const url = selectedProduct ? `http://localhost:5000/products/${selectedProduct._id}` : "http://localhost:5000/products";
-
-            // Method sätts också beroende på om det är en ny produkt eller en uppdatering
             const method = selectedProduct ? "PUT" : "POST";
 
             // Ta bort både _id och __v från produkten om det är en ny produkt
             const productData = selectedProduct ? { ...product, _id: undefined, __v: undefined } : product;
 
-            // Anrop med metoden från variabeln ovan
+            // Anrop med metoden från variablerna ovan
             const response = await fetch(url, {
                 method,
                 headers: { "Content-Type": "application/json" },

@@ -3,7 +3,7 @@ import "../components/Footer.css";
 const Footer = () => {
     return (
         <footer>
-            <p>Av: Adela</p>
+            <p>Av: Adela Knap DT210G</p>
         </footer>
     );
 };

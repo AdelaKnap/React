@@ -3,3 +3,17 @@ main {
     margin: 20px auto;
     padding: 20px;
 }
+
+h1 {
+    margin-bottom: 1.8em;
+}
+
+@media screen and (max-width: 768px) {
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.4em;
+    }
+}

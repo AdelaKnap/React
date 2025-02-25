@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { ProductInterface } from "../types/ProductInterface";
 import "../components/ProductTable.css";
 
@@ -11,6 +12,9 @@ interface ProductTableProps {
 
 // Komponent för tabell med produkter
 const ProductTable = ({ products, onPut, refreshProducts }: ProductTableProps) => {
+
+    // state för error
+    const [error, setError] = useState("");
 
     // Funktion för att radera en produkt
     const handleDelete = async (id: string) => {
@@ -32,6 +36,7 @@ const ProductTable = ({ products, onPut, refreshProducts }: ProductTableProps) =
 
         } catch (error) {
             console.error(error);
+            setError("Raderingen misslyckades, testa igen.")
         }
     };
 
@@ -46,31 +51,38 @@ const ProductTable = ({ products, onPut, refreshProducts }: ProductTableProps) =
     };
 
     return (
-        <table className="productTable">
-            <thead>
-                <tr>
-                    <th>Namn</th>
-                    <th>Beskrivning</th>
-                    <th>Pris</th>
-                    <th>Hantering</th>
-                </tr>
-            </thead>
+        <>
+            {error && (
+                <div className="errorMessage">{error}</div>
+            )}
 
-            {/* Loopar igenom alla produkter och skriv ut i tabellen */}
-            <tbody>
-                {products.map((product) => (
-                    <tr key={product._id}>
-                        <td>{product.name}</td>
-                        <td>{product.description}</td>
-                        <td>{product.price} kr</td>
-                        <td>
-                            <button onClick={() => handlePut(product)}>Redigera</button>
-                            <button onClick={() => handleDelete(product._id!)}>Radera</button>
-                        </td>
+            <table className="productTable">
+                <thead>
+                    <tr>
+                        <th>Namn</th>
+                        <th>Beskrivning</th>
+                        <th>Pris</th>
+                        <th>Hantering</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+
+                {/* Loopar igenom alla produkter och skriv ut i tabellen */}
+                <tbody>
+                    {products.map((product) => (
+                        <tr key={product._id}>
+                            <td data-label="Namn"><span>{product.name}</span></td>
+                            <td data-label="Beskrivning"><span>{product.description}</span></td>
+                            <td data-label="Pris"><span>{product.price} kr</span></td>
+                            <td data-label="Hantering">
+                                <button className="btnUpdate" onClick={() => handlePut(product)}>Redigera</button>
+                                <button className="btnDelete" onClick={() => handleDelete(product._id!)}>Radera</button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+
+            </table>
+        </>
     );
 };
 

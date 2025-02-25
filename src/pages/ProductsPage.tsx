@@ -8,6 +8,7 @@ const ProductPage = () => {
     // States
     const [products, setProducts] = useState<ProductInterface[] | []>([]);
     const [selectedProduct, setSelectedProduct] = useState<ProductInterface | null>(null);
+    const [error, setError] = useState("");
 
     // UseEffect för att hämta produkterna
     useEffect(() => {
@@ -27,6 +28,7 @@ const ProductPage = () => {
             }
         } catch (error) {
             console.log(error);
+            setError("Något gick fel vid hämtning av produkter, testa igen senare.")
         }
     };
 
@@ -38,13 +40,19 @@ const ProductPage = () => {
     // Funktion för att rensa vald produkt
     const clearSelectedProduct = () => {
         setSelectedProduct(null);
-    };    
+    };
 
     return (
         <div>
             <h1>Produkthantering</h1>
+
+            {error && (
+                <div className="errorMessage">{error}</div>
+            )}
+
             <div>
-                <ProductForm selectedProduct={selectedProduct} refreshProducts={getProducts} clearSelectedProduct={clearSelectedProduct}  />
+                <h2>Lägg till ny produkt/uppdatera</h2>
+                <ProductForm selectedProduct={selectedProduct} refreshProducts={getProducts} clearSelectedProduct={clearSelectedProduct} />
 
                 <h2>Aktuella produkter</h2>
                 <ProductTable products={products} onPut={handlePut} refreshProducts={getProducts} />
