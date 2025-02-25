@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { useNavigate } from "react-router-dom";
 import { ProductInterface } from "../types/ProductInterface";
 import "./css/HomePage.css";
 
@@ -10,6 +11,9 @@ const HomePage = () => {
     const [loading, setloading] = useState(false);
     const [search, setSearch] = useState("");
     const [filteredProducts, setFilteredProducts] = useState<ProductInterface[]>([]);
+
+    // För att navigera till en specifik produkt med params och id
+    const navigate = useNavigate();
 
     //useEffect för att hämta produkterna
     useEffect(() => {
@@ -78,6 +82,9 @@ const HomePage = () => {
                             <h3>{product.name}</h3>
                             <p>{product.description}</p>
                             <p><strong>{product.price}kr</strong> </p>
+                            <button className="btnReadMore" onClick={() => navigate(`/product/${product._id}`)}>
+                                Läs mer...
+                            </button>
                         </section>
                     ))
                 }

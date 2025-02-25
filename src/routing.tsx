@@ -3,6 +3,7 @@ import HomePage from "./pages/HomePage";
 import Layout from "./components/Layout";
 import LoginPage from "./pages/LoginPage";
 import ProductsPage from "./pages/ProductsPage";
+import ProductDetails from "./pages/ProductDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 // Routing med layout fil som huvudfil
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <LoginPage />
+            },
+            {
+                path: "/product/:id",
+                element: <ProductDetails />
             },
             {
                 path: "/products",

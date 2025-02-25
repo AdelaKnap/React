@@ -74,3 +74,19 @@
     font-weight: bold;
     font-size: 1.4em;
 }
+
+
+.btnReadMore {
+    margin-top: 1.3em;
+    background-color: #03b709;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.btnReadMore:hover {
+    background-color: #026205;
+    color: white;
+}
