@@ -35,11 +35,16 @@ const ProductPage = () => {
         setSelectedProduct(product);
     };
 
+    // Funktion för att rensa vald produkt
+    const clearSelectedProduct = () => {
+        setSelectedProduct(null);
+    };    
+
     return (
         <div>
             <h1>Produkthantering</h1>
             <div>
-                <ProductForm selectedProduct={selectedProduct} refreshProducts={getProducts} />
+                <ProductForm selectedProduct={selectedProduct} refreshProducts={getProducts} clearSelectedProduct={clearSelectedProduct}  />
 
                 <h2>Aktuella produkter</h2>
                 <ProductTable products={products} onPut={handlePut} refreshProducts={getProducts} />

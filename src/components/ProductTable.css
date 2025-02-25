@@ -28,6 +28,8 @@
 }
 
 .productTable button {
+    background-color: #096e0d;
+    color: white;
     padding: 6px 12px;
     margin: 0 5px;
     border: none;
@@ -37,6 +39,6 @@
 }
 
 .productTable button:hover {
-    background-color: #e6ea08;
+    background-color: #0b953c;
     color: black;
 }

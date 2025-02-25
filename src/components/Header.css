@@ -24,14 +24,14 @@ nav ul li a {
 
 nav ul li a:hover,
 nav ul li .active {
-    color: yellow;
+    color: #4CAF50;
 }
 
 button {
-    background-color: yellow;
-    color: black;
+    background-color: #03b709;
+    color: white;
     border: none;
-    padding: 4px 8px;
+    padding: 5px 9px;
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
@@ -39,5 +39,5 @@ button {
 
 button:hover {
     background-color: black;
-    color: yellow;
+    color: red;
 }

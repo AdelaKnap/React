@@ -12,12 +12,13 @@
     font-weight: bold;
     display: block;
     margin-bottom: 0.5em;
+    margin-top: 1em;
 }
 
 .productForm input,
 .productForm textarea {
     width: 95%;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
     padding: 10px;
     border: 1px solid #adaaaa;
     border-radius: 5px;
@@ -38,4 +39,10 @@
 
 .productForm button:hover {
     background: #135917;
+}
+
+.error-message {
+    color: red;
+    display: block;
+    margin-bottom: 1.2em;
 }
