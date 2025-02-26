@@ -23,7 +23,7 @@ const ProductTable = ({ products, onPut, refreshProducts }: ProductTableProps) =
 
         // Fetch-anrop med delete och id
         try {
-            const response = await fetch(`http://localhost:5000/products/${id}`,
+            const response = await fetch(`https://react-mom3-backend.onrender.com/products/${id}`,
                 {
                     method: "DELETE",
                     credentials: "include"

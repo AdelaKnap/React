@@ -18,7 +18,7 @@ const ProductPage = () => {
     // Fetch-anrop för att hämta produkterna
     const getProducts = async () => {
         try {
-            const response = await fetch("http://localhost:5000/products");
+            const response = await fetch("https://react-mom3-backend.onrender.com/products");
 
             if (!response.ok) {
                 throw new Error("Något gick fel vid hämtning av produkterna.");

@@ -51,7 +51,7 @@ const ProductForm = ({ selectedProduct, refreshProducts, clearSelectedProduct }:
             setErrors({});
 
             // Url och metod sätts beroende på om det är en ny produkt eller en uppdatering (om selectedProduct finns är det uppdatering)
-            const url = selectedProduct ? `http://localhost:5000/products/${selectedProduct._id}` : "http://localhost:5000/products";
+            const url = selectedProduct ? `https://react-mom3-backend.onrender.com/products/${selectedProduct._id}` : "https://react-mom3-backend.onrender.com/products";
             const method = selectedProduct ? "PUT" : "POST";
 
             // Ta bort både _id och __v från produkten om det är en ny produkt

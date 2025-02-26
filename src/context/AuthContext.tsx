@@ -17,7 +17,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Funktion för logga in
     const login = async (credentials: LoginCredentials): Promise<void> => {
         try {
-            const response = await fetch(`http://localhost:5000/users/login`, {
+            const response = await fetch(`https://react-mom3-backend.onrender.com/users/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -48,7 +48,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Funktion för att hämta inloggad användare för att inte behöva logga in på nytt vid sidomladdning
     const checkUser = async () => {
         try {
-            const response = await fetch("http://localhost:5000/users/checkSession", {
+            const response = await fetch(`https://react-mom3-backend.onrender.com/users/checkSession`, {
                 method: "GET",
                 credentials: "include",
                 headers: {
@@ -76,7 +76,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     // Funktion för att logga ut
     const logout = async () => {
         try {
-            const response = await fetch("http://localhost:5000/users/logout", {
+            const response = await fetch(`https://react-mom3-backend.onrender.com/users/logout`, {
                 method: "GET",
                 credentials: "include",
                 headers: { "Content-Type": "application/json" },

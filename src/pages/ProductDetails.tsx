@@ -27,7 +27,7 @@ const ProductDetails = () => {
             setLoading(true);
             setError(null);
 
-            const response = await fetch(`http://localhost:5000/products/${productId}`);
+            const response = await fetch(`https://react-mom3-backend.onrender.com/products/${productId}`);
 
             if (!response.ok) {
                 throw new Error("Något gick fel vid hämtning av produkten.");
