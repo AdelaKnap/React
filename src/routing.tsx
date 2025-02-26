@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage";
 import ProductsPage from "./pages/ProductsPage";
 import ProductDetails from "./pages/ProductDetails";
 import ProtectedRoute from "./components/ProtectedRoute";
+import CreateUserPage from "./pages/CreateUserPage";
 
 // Routing med layout fil som huvudfil
 const router = createBrowserRouter([
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <LoginPage />
+            },
+            {
+                path: "/create-user",
+                element: <CreateUserPage />
             },
             {
                 path: "/product/:id",

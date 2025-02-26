@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./css/LoginPage.css";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const LoginPage = () => {
 
@@ -52,16 +53,16 @@ const LoginPage = () => {
                         placeholder="Användarnamn"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
-                        required
                     />
                     <input
                         type="password"
                         placeholder="Lösenord"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        required
                     />
                     <button type="submit">Logga in</button>
+
+                    <p><Link to="/create-user">Skapa ny användare här</Link></p>
                 </form>
             </div>
         </>
